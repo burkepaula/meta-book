@@ -17,7 +17,7 @@ Esta API permite gerenciar uma coleção de livros e suas respectivas críticas.
 
 ## Como Executar:
 
-1. Pré-requisitos: Java 21, Maven.
+1. Pré-requisitos: Java 21, Maven, Google API Key, MySQL.
 2. Clonar o repositório: `git clone https://github.com/burkepaula/meta-book`
 2. Construir o projeto: `mvn clean install`
 3. Executar a aplicação: `mvn spring-boot:run`
@@ -32,9 +32,6 @@ Esta API permite gerenciar uma coleção de livros e suas respectivas críticas.
 * Spring Data JPA
 * Google Cloud Natural Language API
 * MySQL
-* JUnit 5
-* Mockito
-* AssertJ
 
 ## Exemplo de Requisições:
 
