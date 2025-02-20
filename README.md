@@ -22,7 +22,6 @@ Esta API permite gerenciar uma coleção de livros e suas respectivas críticas.
 2. Construir o projeto: `mvn clean install`
 3. Executar a aplicação: `mvn spring-boot:run`
 4. Testar a API: Use o Postman ou uma ferramenta similar para testar os endpoints.
-5. Testes unitários e de integração: Os testes estão incluídos no projeto, execute usando `mvn test`
 
 ## Tecnologias:
 
