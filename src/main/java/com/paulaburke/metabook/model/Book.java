@@ -26,7 +26,6 @@ public class Book {
     private String description;
 
 
-    // Construtores
     public Book() {}
 
     @Override

@@ -23,13 +23,11 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    // Listar todos os livros
     @GetMapping
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
-    // Adicionar um novo livro
     @PostMapping
     public ResponseEntity<Book> addBook(@Valid @RequestBody Book book) {
         System.out.println("Livro recebido: " + book);
@@ -37,7 +35,6 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdBook);
     }
 
-    // Atualizar um livro existente
     @PutMapping("/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
         Optional<Book> updatedBook = bookService.updateBook(id, bookDetails);
@@ -45,13 +42,12 @@ public class BookController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    // Deletar um livro pelo ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
         if (bookService.deleteBook(id)) {
-            return ResponseEntity.noContent().build(); // Retorna 204 se a exclusão for bem-sucedida
+            return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Retorna 404 se o livro não for encontrado
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 

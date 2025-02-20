@@ -19,29 +19,26 @@ public class ReviewController {
 
     private final ReviewService reviewService;
     private final GoogleCloudService googleCloudService;
-    private final BookService bookService; // Declare a variável aqui
+    private final BookService bookService;
 
     @Autowired
     public ReviewController(ReviewService reviewService, GoogleCloudService googleCloudService, BookService bookService) {
         this.reviewService = reviewService;
         this.googleCloudService = googleCloudService;
-        this.bookService = bookService; // Atribua a variável corretamente
+        this.bookService = bookService;
     }
 
     @PostMapping
     public ResponseEntity<Review> addReview(@Valid @RequestBody Review review) {
-        // Buscar o livro do banco de dados
         Optional<Book> optionalBook = bookService.getBookById(review.getBook().getId());
 
         if (!optionalBook.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
 
-        Book book = optionalBook.get(); // Obter o livro do Optional
-
-        // Gerar a crítica
+        Book book = optionalBook.get();
         String generatedReview = googleCloudService.generateReview(book.getTitle());
-        review.setReviewText(generatedReview); // Adiciona a crítica gerada à revisão
+        review.setReviewText(generatedReview);
 
         Review createdReview = reviewService.addReview(review);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdReview);

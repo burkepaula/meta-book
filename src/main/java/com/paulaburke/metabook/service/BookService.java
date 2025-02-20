@@ -25,7 +25,6 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    // Atualizar um livro
     public Optional<Book> updateBook(Long id, Book bookDetails) {
         return bookRepository.findById(id).map(existingBook -> {
             existingBook.setTitle(bookDetails.getTitle());
@@ -36,7 +35,6 @@ public class BookService {
         });
     }
 
-    // Deletar um livro
     public boolean deleteBook(Long id) {
         if (bookRepository.existsById(id)) {
             bookRepository.deleteById(id);
@@ -46,7 +44,7 @@ public class BookService {
     }
 
     public Optional<Book> getBookById(Long id) {
-        return bookRepository.findById(id); // Retorna um Optional<Book>
+        return bookRepository.findById(id);
     }
 
 }

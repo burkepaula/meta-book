@@ -24,7 +24,6 @@ public class Review {
     @NotBlank(message = "O texto da crítica é obrigatório.")
     private String reviewText;
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }
